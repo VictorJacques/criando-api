@@ -1,7 +1,7 @@
 const { Sequelize } = require("sequelize");
 const connection = require("../database");
 
-const Patient = connection.define("Patient", {
+const Doctor = connection.define("Doctor", {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -28,30 +28,29 @@ const Patient = connection.define("Patient", {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  emergencyContact: {
+  graduatedAt: {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  allergies: {
+  crm_uf: {
     type: Sequelize.STRING,
-    defaultValue: "Nenhum",
+    allowNull: false,
   },
-  specificCare: {
-    type: Sequelize.STRING,
-    defaultValue: "Nenhum",
-  },
-  healthInsurance: {
-    type: Sequelize.STRING,
-    defaultValue: "Nenhum",
-  },
-  serviceStatus: {
+  clinicSpecialization: {
     type: Sequelize.ENUM(
-      "Aguardando Atendimento",
-      "Em Atendimento",
-      "Atendido",
-      "Não Atendido"
+      "Clínico Geral",
+      "Anestesista",
+      "Dermatologia",
+      "Ginecologia",
+      "Neurologia",
+      "Pediatria",
+      "Psiquiatria",
+      "Ortopedia"
     ),
-    defaultValue: "Não Atendido",
+  },
+  sysStatus: {
+    type: Sequelize.ENUM("Ativo", "Inativo"),
+    defaultValue: "Ativo",
   },
   serviceTotal: {
     type: Sequelize.INTEGER,
@@ -59,4 +58,4 @@ const Patient = connection.define("Patient", {
   },
 });
 
-module.exports = Patient;
+module.exports = Doctor;

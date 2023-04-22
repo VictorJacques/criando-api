@@ -1,7 +1,7 @@
 const { Sequelize } = require("sequelize");
 const connection = require("../database");
 
-const Patient = connection.define("Patient", {
+const Nurse = connection.define("Nurse", {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -28,35 +28,14 @@ const Patient = connection.define("Patient", {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  emergencyContact: {
+  graduatedAt: {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  allergies: {
+  cofen_uf: {
     type: Sequelize.STRING,
-    defaultValue: "Nenhum",
-  },
-  specificCare: {
-    type: Sequelize.STRING,
-    defaultValue: "Nenhum",
-  },
-  healthInsurance: {
-    type: Sequelize.STRING,
-    defaultValue: "Nenhum",
-  },
-  serviceStatus: {
-    type: Sequelize.ENUM(
-      "Aguardando Atendimento",
-      "Em Atendimento",
-      "Atendido",
-      "Não Atendido"
-    ),
-    defaultValue: "Não Atendido",
-  },
-  serviceTotal: {
-    type: Sequelize.INTEGER,
-    defaultValue: 0,
+    allowNull: false,
   },
 });
 
-module.exports = Patient;
+module.exports = Nurse;
