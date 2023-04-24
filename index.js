@@ -25,6 +25,9 @@ const listNurses = require("./src/controllers/Nurse/listNurse");
 const listNurseById = require("./src/controllers/Nurse/listNurseById");
 const deleteNurse = require("./src/controllers/Nurse/deleteNurse");
 
+const atendimento = require("./src/controllers/atendimento");
+const validateService = require("./src/middlewares/validateService");
+
 const app = express();
 app.use(express.json());
 
@@ -50,5 +53,7 @@ app.put("/api/enfermeiros/:id", validateNewNurse, editNurse);
 app.get("/api/enfermeiros", listNurses);
 app.get("/api/enfermeiros/:id", listNurseById);
 app.delete("/api/enfermeiros/:id", deleteNurse);
+
+app.put("/api/atendimentos", validateService, atendimento);
 
 app.listen(3333, () => console.log("Server Online"));
