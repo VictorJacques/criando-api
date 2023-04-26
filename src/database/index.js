@@ -5,7 +5,7 @@ const connection = new Sequelize({
   username: "postgres",
   password: "senai",
   port: "5432",
-  database: "labmedicinebd",
+  database: "Api",
   define: {
     timestamps: true,
     underscored: true,

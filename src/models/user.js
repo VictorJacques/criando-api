@@ -1,41 +1,29 @@
 const { Sequelize } = require("sequelize");
 const connection = require("../database");
 
-const Nurse = connection.define("Nurse", {
+const User = connection.define("User", {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
     allowNull: false,
     primaryKey: true,
   },
-  fullName: {
+  nome: {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  gender: {
-    type: Sequelize.ENUM("MASC", "FEM"),
+  idade: {
+    type: Sequelize.INTEGER,
     allowNull: false,
   },
-  birthDate: {
-    type: Sequelize.DATEONLY,
-    allowNull: false,
-  },
-  cpf: {
+  cargo: {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  tel: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
-  graduatedAt: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
-  cofen_uf: {
+  senha: {
     type: Sequelize.STRING,
     allowNull: false,
   },
 });
 
-module.exports = Nurse;
+module.exports = User;
